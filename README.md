@@ -33,21 +33,21 @@ Watch as how different frequencies affect the visualizer.
 ![Wireframe](./images/ZEROwireframe.png)
 
 ## Implementation Timeline
-Friday :
+1. Friday : ✔️
 - Seperate audio file into frequencies that are managable.
 - Create canvas objects based on frequencies levels.
-Saturday :
+2. Saturday : ❌
 - Tune canvas objects more precisely in order to seperate instruments.
 - Create sliders to adjust the shape of the visualizer.
-Monday :
+3. Monday : ❌
 - Add a EQ slider to adjust how to song will sound.
 - Stylize playbar.
-Tuesday :
+4. Tuesday : ❌
 - Implement three.js for a 3D object.
 - Improve style and finalize the project.
-Wednsday :
+5. Wednsday : ❌
 - Create demo GIFS for the github page and finish documentation of project.
-Thursday
+6. Thursday : ❌
 - Complete the final look of the project.
 
 ## References
