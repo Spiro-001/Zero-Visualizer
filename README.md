@@ -20,7 +20,7 @@ Music has always been apart of mine and many lives. ZERO is an audio visualizer 
 frequencies in songs much more apparent.
 
 ## Wireframe
-![Wireframe](D:\Daniel\Documents\ZEROwireframe.png)
+![Wireframe](./images/ZEROwireframe.png)
 
 ## Implementation Timeline
 Friday   |    Seperate audio file into frequencies that are managable.
