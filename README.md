@@ -1,4 +1,6 @@
-<style>H1{color:Red;} ZERO</style> | An Audio Visualiztion 
+<style>H1{color:Red;} </style>
+
+# ZERO | An Audio Visualiztion 
 Author : Yong Kim
 
 ## Table of Contents
