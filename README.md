@@ -1,5 +1,5 @@
-# Zero | An Audio Visualiztion
-insert text
+# ![#f03c15]ZERO | ![#ffffff]An Audio Visualiztion
+Author : Yong Kim
 
 ## Table of Contents
 * [API's](#apis)
@@ -21,8 +21,8 @@ insert text
 * Mid to High frequencies : 1200 - 2400 Hz 
 * High frequencies : 2400 Hz - 5000 Hz
 * Vocal frequencies : 100 - 300 Hz [Core Vocal Frequencies] | 1000 - 1400 Hz [Mid Vocal Frequencies] 
-* Clap | Snare frequencies :
-![AudioSpectrum](./images/audiospectrum_1.gif)
+* Clap | Snare frequencies : 2200 - 2800 Hz | 250 - 350 Hz & 1000 - 1200 Hz
+![AudioSpectrum](./images/spectrum.png)
 
 ## Project Objectives
 Music has always been apart of mine and many lives. ZERO is an audio visualizer that makes visualizing different
