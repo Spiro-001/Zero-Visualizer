@@ -142,6 +142,7 @@ const Play = function(){
         }
         audio.play();
         renderVisualizer();
+        console.log("hi");
     }
 }
 
