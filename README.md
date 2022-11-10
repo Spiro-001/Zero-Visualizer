@@ -1,4 +1,4 @@
-# ![#f03c15]ZERO | ![#ffffff]An Audio Visualiztion
+<style>H1{color:Red;} ZERO</style> | An Audio Visualiztion 
 Author : Yong Kim
 
 ## Table of Contents
