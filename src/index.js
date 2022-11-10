@@ -1,7 +1,2 @@
-import Example from "./scripts/example.js";
-
-document.addEventListener("DOMContentLoaded", () => {
-    const main = document.getElementById("main");
-    new Example(main);
-});
- 
+import { Play } from "./scripts/visualization"
+Play();
