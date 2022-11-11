@@ -1,6 +1,24 @@
 /*!*****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/visual.css ***!
   \*****************************************************************************************************/
+html {
+    height: 100%;
+    width: 100%;
+}
+
+div#content{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+body{
+    height: 100%;
+    width: 100%
+}
+
 #soundfile {
     position: fixed;
     top: 10px;
@@ -17,10 +35,139 @@
 }
   
 audio {
+    display: block;
     position: fixed;
-    left: 10px;
-    bottom: 10px;
-    width: calc(100% - 20px);
+    padding-top: 60px;
+    left: 0px;
+    bottom: -40px;
+    width: calc(100%);
+    transition: 0.75s bottom;
+}
+
+audio:hover {
+    display: block;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: calc(100%);
+}
+
+.eqmenu {
+    display: flex;
+    position: fixed;
+    padding-left: 50px;
+    float: right;
+    right: 0px;
+    top: 0px;
+    width: 0%;
+    height: calc(100%);
+    background-color: rgba(44, 44, 44, 0.0);
+    transition-property: width, background-color;
+    transition-duration: 1.25s;
+}
+
+.eqmenu:hover {
+    display: block;
+    position: relative;
+    padding-left: 50px;
+    float: right;
+    width: 18%;
+    height: calc(100%);
+    background-color: rgba(44, 44, 44, 0.5);
+}
+
+.soundmenu {
+    display: flex;
+    position: fixed;
+    padding-right: 50px;
+    float: left;
+    left: 0px;
+    top: 0px;
+    width: 0%;
+    height: calc(100%);
+    background-color: rgba(44, 44, 44, 0.0);
+    transition-property: opacity, width, background-color;
+    transition-duration: 1s;
+}
+
+.soundmenu:hover {
+    display: block;
+    position: relative;
+    padding-right: 50px;
+    float: left;
+    width: 18%;
+    height: calc(100%);
+    background-color: rgba(44, 44, 44, 0.5);
+}
+
+.submitsong {
+    display: none;
+    position: absolute;
+}
+
+.eq {
+    display: none;
+    position: absolute;
+}
+
+.soundmenu:hover .submitsong{
+    display: block;
+    position: relative;
+    left: 35%;
+}
+
+.eqmenu:hover .slider{
+    display: block;
+    position: relative;
+    right: 15%;
+}
+
+.slidecontainer {
+    display: block;
+    position: relative;
+    top: 5%;
+    left: 20%;
+    width: 75%;
+    padding-bottom: 50px;
+  }
+  
+  /* The slider itself */
+.slider {
+    display: none;
+    position: fixed;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 15px;
+    background-color: aliceblue;
+    height: 5px;
+    width: 100%;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 15px;
+    background: #4dd5ff;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 15px;
+    outline: 1px black solid;
+    background: #4dd5ff;
+    cursor: pointer;
+  }
+  
+.slider:hover {
+    opacity: 1;
+    color: rgb(255, 255, 255);
 }
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
