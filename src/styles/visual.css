@@ -1,6 +1,6 @@
 html {
-    height: 100%;
-    width: 100%;
+    height: 98%;
+    width: 98%;
 }
 
 div#content{
@@ -74,7 +74,7 @@ audio:hover {
 }
 
 .soundmenu {
-    display: flex;
+    display: inline;
     position: fixed;
     padding-right: 50px;
     float: left;
@@ -99,7 +99,7 @@ audio:hover {
 
 .submitsong {
     display: none;
-    position: absolute;
+    position: relative;
 }
 
 .eq {
@@ -128,7 +128,6 @@ audio:hover {
     padding-bottom: 50px;
   }
   
-  /* The slider itself */
 .slider {
     display: none;
     position: fixed;
@@ -165,4 +164,33 @@ audio:hover {
 .slider:hover {
     opacity: 1;
     color: rgb(255, 255, 255);
+}
+
+.soundmenu #uploadButton{
+    display: none;
+    position: relative;
+}
+
+.soundmenu:hover #uploadButton{
+    display: inline-block;
+    position: relative;
+    top: calc(5%);
+    left: calc(10%);
+}
+
+.soundmenu #uploadButtonText {
+    display: none;
+    position: relative;
+}
+
+.soundmenu:hover #uploadButtonText {
+    display: inline-block;
+    position: relative;
+    top: calc(5%);
+    left: calc(10%);
+}
+
+li {
+    position: relative;
+    padding-top: 10px;
 }

@@ -1,9 +1,19 @@
 const Play = function(){
 
     let sfile = document.getElementById("soundfile");
+    let uploadSound = document.getElementById("uploadButton")
+    let uploadText = document.getElementById("uploadButtonText")
+
+    uploadSound.addEventListener("click", function(){
+        sfile.click();
+    });
+
     let audio = document.getElementById("audio");
   
     sfile.onchange = function(){
+        if (sfile.value) uploadText.innerHTML = sfile.value;
+        else uploadText.innerHTML = "No file chosen."
+
         let sfiles = this.files;
         audio.src = URL.createObjectURL(sfiles[0]);
         audio.load();
@@ -33,7 +43,7 @@ const Play = function(){
         let EQ = 5 // THE AMOUNT OF IF STATEMENTS
 
         function renderVisualizer(){
-            // console.log(dataArray);
+            console.log(dataArray);
             requestAnimationFrame(renderVisualizer);
             x = 0;
             visualizer.getByteFrequencyData(dataArray);
