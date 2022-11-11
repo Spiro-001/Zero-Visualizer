@@ -20,22 +20,26 @@
         <div class="soundmenu">
           <li>
             <input type="file" id="soundfile" accept="audio/*" hidden="hidden">
-            <button type="button" id="uploadButton">Upload Song</button>
-            <span id="uploadButtonText">No file chosen, yet</span>
+            <button type="button" id="uploadButton">
+              <img id="uploadButtonImage" src="./assets/uploadbutton.png">
+              <p id="buttonText">Upload Song</p>
+            </button>
           </li>
           <li>
-            <input type="file" id="soundfile" accept="audio/*" hidden="hidden">
-            <button type="button" id="uploadButton">Upload Song</button>
-            <span id="uploadButtonText">No file chosen, yet</span>
+
           </li>
         </div>
         <div class="eqmenu">
-          <div class="slidecontainer">
-            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-          </div>
-          <div class="slidecontainer">
-            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-          </div>
+          <li>
+            <div class="slidecontainer">
+              <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+            </div>
+          </li>
+          <li>
+            <div class="slidecontainer">
+              <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+            </div>
+          </li>
         </div>
         <audio id="audio" controls></audio>
     </div>

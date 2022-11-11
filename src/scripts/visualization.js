@@ -11,8 +11,8 @@ const Play = function(){
     let audio = document.getElementById("audio");
   
     sfile.onchange = function(){
-        if (sfile.value) uploadText.innerHTML = sfile.value;
-        else uploadText.innerHTML = "No file chosen."
+        // if (sfile.value) uploadText.innerHTML = "";
+        // else uploadText.innerHTML = "No file chosen."
 
         let sfiles = this.files;
         audio.src = URL.createObjectURL(sfiles[0]);
