@@ -1,2 +1,6 @@
-import { Play } from "./scripts/visualization"
-Play();
+import { circlePlay } from "./scripts/circlePlay"
+import { mirrorbarPlay } from "./scripts/mirrorbarPlay"
+import { barPlay } from "./scripts/barPlay"
+import { lightningPlay } from "./scripts/lightningPlay"
+import { heartPlay } from "./scripts/heartPlay"
+heartPlay();

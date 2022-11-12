@@ -1,19 +1,14 @@
-const Play = function(){
+const circlePlay = function(){
 
     let sfile = document.getElementById("soundfile");
     let uploadSound = document.getElementById("uploadButton")
-    let uploadText = document.getElementById("uploadButtonText")
+    let audio = document.getElementById("audio");
 
     uploadSound.addEventListener("click", function(){
         sfile.click();
     });
-
-    let audio = document.getElementById("audio");
   
     sfile.onchange = function(){
-        // if (sfile.value) uploadText.innerHTML = "";
-        // else uploadText.innerHTML = "No file chosen."
-
         let sfiles = this.files;
         audio.src = URL.createObjectURL(sfiles[0]);
         audio.load();
@@ -43,7 +38,6 @@ const Play = function(){
         let EQ = 5 // THE AMOUNT OF IF STATEMENTS
 
         function renderVisualizer(){
-            console.log(dataArray);
             requestAnimationFrame(renderVisualizer);
             x = 0;
             visualizer.getByteFrequencyData(dataArray);
@@ -54,7 +48,7 @@ const Play = function(){
                 ctx.beginPath();
                 if (
                     (i >= 0 && i < 3) && // Frequency
-                    barHeight > 150 // Noise Gate
+                    barHeight > (150 * audio.volume) // Noise Gate
                     ) 
                 {
                     ctx.lineWidth = 1;
@@ -63,7 +57,7 @@ const Play = function(){
                 }
                 else if (
                     (i >= 3 && i < 4) && // Frequency
-                    barHeight > 150 // Noise Gate
+                    barHeight > (150 * audio.volume) // Noise Gate
                     ) 
                 {
                     ctx.lineWidth = 1;
@@ -72,7 +66,7 @@ const Play = function(){
                 }
                 else if (
                     (i > 4 && i < 6) && // Frequency
-                    barHeight > 150 // Noise Gate
+                    barHeight > (150 * audio.volume) // Noise Gate
                     ){
                     ctx.lineWidth = 1;
                     ctx.strokeStyle = `rgb(${0},${255},${0})`; // MIDS
@@ -80,7 +74,7 @@ const Play = function(){
                 }
                 else if (
                     (i >= 6 && i < 8) && // Frequency
-                    barHeight > 150 // Noise Gate
+                    barHeight > (150 * audio.volume) // Noise Gate
                     )
                 {
                     ctx.lineWidth = 1;
@@ -89,7 +83,7 @@ const Play = function(){
                 }
                 else if (
                     (i > 8 && i < 11) && // Frequency
-                    barHeight > 150 // Noise Gate
+                    barHeight > (150 * audio.volume) // Noise Gate
                     )
                 {
                     ctx.lineWidth = 1;
@@ -98,7 +92,7 @@ const Play = function(){
                 }
                 else if ( // MID TO HIGH
                     (i >= 11 && i < 13) && // Frequency
-                    barHeight > 195 // Noise Gate
+                    barHeight > (195 * audio.volume) // Noise Gate
                     )
                 {
                     ctx.lineWidth = 1;
@@ -107,7 +101,7 @@ const Play = function(){
                 }
                 else if ( // CLAPS
                     (i >= 13 && i < 19) && // Frequency
-                    barHeight > 185 // Noise Gate
+                    barHeight > (185 * audio.volume) // Noise Gate
                     )
                 {
                     ctx.lineWidth = 1;
@@ -116,7 +110,7 @@ const Play = function(){
                 }
                 else if ( // HIGH 
                     (i >= 19 && i < 25) && // Frequency
-                    barHeight > 185 // Noise Gate
+                    barHeight > (185 * audio.volume) // Noise Gate
                     )
                 {
                     ctx.lineWidth = 1;
@@ -125,7 +119,7 @@ const Play = function(){
                 }
                 else if ( // HIGH
                     (i >= 25 && i < 35) && // Frequency
-                    barHeight > 185 // Noise Gate
+                    barHeight > (185 * audio.volume) // Noise Gate
                     )
                 {
                     ctx.lineWidth = 1;
@@ -134,7 +128,7 @@ const Play = function(){
                 }
                 else if ( // HIGH
                     (i >= 35 && i < 50) && // Frequency
-                    barHeight > 185 // Noise Gate
+                    barHeight > (185 * audio.volume) // Noise Gate
                     )
                 {
                     ctx.lineWidth = 1;
@@ -152,8 +146,7 @@ const Play = function(){
         }
         audio.play();
         renderVisualizer();
-        console.log("hi");
     }
 }
 
-export { Play };
+export { circlePlay };
