@@ -23,7 +23,7 @@ const heartPlay = function(){
         let ctx = stage.getContext('2d');
         src.connect(visualizer);
         visualizer.connect(audioContext.destination);
-        visualizer.fftSize = 512; // Higher the more detail in data.
+        visualizer.fftSize = 1024; // Higher the more detail in data.
 
         let bufferLength = visualizer.frequencyBinCount; // Half of fftSize represents the amount of data values
 
@@ -34,128 +34,64 @@ const heartPlay = function(){
 
         let barWidth = (WIDTH / bufferLength) * 2.5;
         let barHeight;
+        let boxSize = 64;
+
         let x = 0;
-        let EQ = 5 // THE AMOUNT OF IF STATEMENTS
+        let y = 0;
+        let boxCount = 0;
+        let startRipple;
+        let heartArray = [96, 97, 100, 101,
+                        123, 124, 125, 126, 127, 128, 129, 130,
+                        151, 152, 153, 154, 155, 156, 157, 158,
+                        180, 181, 182, 183, 184, 185,
+                        209, 210, 211, 212,
+                        238, 239
+                    ]
 
         function renderVisualizer(){
             requestAnimationFrame(renderVisualizer);
+            x = 0;
+            y = 1;
+            boxCount = 1;
+            startRipple = undefined;
             visualizer.getByteFrequencyData(dataArray);
+            ctx.fillStyle = "#000";
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
-            // console.log(dataArray);
             for (let i = 0; i < bufferLength; i++){
-                barHeight = dataArray[i];
+                if (heartArray.includes(boxCount))
+                {
+                    if (dataArray[3] < 200) barHeight = 0;
+                    else barHeight = dataArray[4];
+                    ctx.fillStyle = `rgba(${255},${0},${0},${barHeight / 256})`;
+                    ctx.fillRect(x, y, boxSize, boxSize);
+                }
+                else
+                {
+                    while(startRipple === undefined)
+                    {
+                        startRipple = Math.floor(Math.random() * 449);
+                        if (heartArray.includes(startRipple)) startRipple = undefined;
+                        console.log(startRipple);
+                    }
+                    for (let howManyTimes = 0; howManyTimes <= 28; howManyTimes++)
+                    {
+                        ctx.fillStyle = `rgba(${255},${0},${0})`;
+                        ctx.fillRect(startRipple * 69, Math.floor(startRipple / 28) * 69, boxSize, boxSize);
+                    }
+                }
+                
+                x += boxSize + 5; // GAP
+                boxCount += 1;
+                if (x > 1920) x = 0, y += boxSize + 5; // GAP and RESET X
 
-                if (
-                    (i >= 0 && i < 3) && // Frequency
-                    barHeight > (150 * audio.volume) // Noise Gate
-                    ) 
-                {
-                    ctx.beginPath();
-                    ctx.moveTo(WIDTH / 2, HEIGHT / 2 - barHeight);
-                    ctx.bezierCurveTo(WIDTH / 2 + 185 + barHeight, HEIGHT / 2 - 184 - barHeight, WIDTH / 2 + 185 + barHeight, HEIGHT / 2 + 36 - barHeight, WIDTH / 2 - barHeight, HEIGHT / 2 + 111 + barHeight); // Right Heart
-                    ctx.moveTo(WIDTH / 2, HEIGHT / 2 - barHeight);
-                    ctx.bezierCurveTo(WIDTH / 2 - 185 - barHeight, HEIGHT / 2 - 184 - barHeight, WIDTH / 2 - 185 - barHeight, HEIGHT / 2 + 36 + barHeight, WIDTH / 2 + barHeight, HEIGHT / 2 + 111 + barHeight); // Left Heart
-                    // ctx.lineWidth = 3;
-                    // ctx.strokeStyle = `rgb(${255},${0},${0})`; // SUBS
-                    // ctx.arc(canvas.width / 2, canvas.height / 2, 255 + barHeight, (0 / EQ) * Math.PI, (1 / EQ) * Math.PI, false);
-                }
-                else if (
-                    (i >= 3 && i < 4) && // Frequency
-                    barHeight > (150 * audio.volume) // Noise Gate
-                    ) 
-                {
-                    ctx.beginPath();
-                    ctx.moveTo(WIDTH / 2, HEIGHT / 2 - barHeight);
-                    ctx.bezierCurveTo(WIDTH / 2 + 185 + barHeight, HEIGHT / 2 - 184 - barHeight, WIDTH / 2 + 185 + barHeight, HEIGHT / 2 + 36 - barHeight, WIDTH / 2 - barHeight, HEIGHT / 2 + 111 + barHeight); // Right Heart
-                    ctx.moveTo(WIDTH / 2, HEIGHT / 2 - barHeight);
-                    ctx.bezierCurveTo(WIDTH / 2 - 185 - barHeight, HEIGHT / 2 - 184 - barHeight, WIDTH / 2 - 185 - barHeight, HEIGHT / 2 + 36 + barHeight, WIDTH / 2 + barHeight, HEIGHT / 2 + 111 + barHeight); // Left Heart
-                    // ctx.lineWidth = 1;
-                    // ctx.strokeStyle = `rgb(${255},${0},${0})`; // LOWS
-                    // ctx.arc(canvas.width / 2, canvas.height / 2, 255 + barHeight, (1 / EQ) * Math.PI, (2 / EQ) * Math.PI, false);
-                }
-                else if (
-                    (i > 4 && i < 6) && // Frequency
-                    barHeight > (150 * audio.volume) // Noise Gate
-                    ){
-                    ctx.lineWidth = 2;
-                    ctx.strokeStyle = `rgb(${0},${255},${0})`; // MIDS
-                    ctx.arc(canvas.width / 2, canvas.height / 2, 255 + barHeight, (2 / EQ) * Math.PI, (3 / EQ) * Math.PI, false);
-                }
-                else if (
-                    (i >= 6 && i < 8) && // Frequency
-                    barHeight > (150 * audio.volume) // Noise Gate
-                    )
-                {
-                    ctx.lineWidth = 1;
-                    ctx.strokeStyle = `rgb(${0},${0},${255})`; // HIGHS
-                    ctx.arc(canvas.width / 2, canvas.height / 2, 255 + barHeight, (3 / EQ) * Math.PI, (4 / EQ) * Math.PI, false);
-                }
-                else if (
-                    (i > 8 && i < 11) && // Frequency
-                    barHeight > (150 * audio.volume) // Noise Gate
-                    )
-                {
-                    ctx.lineWidth = 4;
-                    ctx.strokeStyle = `rgb(${200},${50},${255})`;
-                    ctx.arc(canvas.width / 2, canvas.height / 2, 255 + barHeight, (4 / EQ) * Math.PI, (5 / EQ) * Math.PI, false);
-                }
-                else if ( // MID TO HIGH
-                    (i >= 11 && i < 13) && // Frequency
-                    barHeight > (150 * audio.volume) // Noise Gate
-                    )
-                {
-                    ctx.lineWidth = 1;
-                    ctx.strokeStyle = `rgb(${255},${0},${255})`;
-                    ctx.arc(canvas.width / 2, canvas.height / 2, 255 + barHeight, (5 / EQ) * Math.PI, (6 / EQ) * Math.PI, false);
-                }
-                else if ( // CLAPS
-                    (i >= 13 && i < 19) && // Frequency
-                    barHeight > (150 * audio.volume) // Noise Gate
-                    )
-                {
-                    ctx.lineWidth = 1;
-                    ctx.strokeStyle = `rgb(${255},${255},${255})`;
-                    ctx.arc(canvas.width / 2, canvas.height / 2, 255 + barHeight, (6 / EQ) * Math.PI, (7 / EQ) * Math.PI, false);
-                }
-                else if ( // HIGH 
-                    (i >= 19 && i < 25) && // Frequency
-                    barHeight > (150 * audio.volume) // Noise Gate
-                    )
-                {
-                    ctx.lineWidth = 1;
-                    ctx.strokeStyle = `rgb(${255},${255},${255})`;
-                    ctx.arc(canvas.width / 2, canvas.height / 2, 255 + barHeight, (7 / EQ) * Math.PI, (8 / EQ) * Math.PI, false);
-                }
-                else if ( // HIGH
-                    (i >= 25 && i < 35) && // Frequency
-                    barHeight > (150 * audio.volume) // Noise Gate
-                    )
-                {
-                    ctx.lineWidth = 1;
-                    ctx.strokeStyle = `rgb(${255},${255},${255})`;
-                    ctx.arc(canvas.width / 2, canvas.height / 2, 255 + barHeight, (8 / EQ) * Math.PI, (9 / EQ) * Math.PI, false);
-                }
-                else if ( // HIGH
-                    (i >= 35 && i < 50) && // Frequency
-                    barHeight > (150 * audio.volume) // Noise Gate
-                    )
-                {
-                    ctx.lineWidth = 2;
-                    ctx.strokeStyle = `rgb(${255},${255},${255})`;
-                    ctx.arc(canvas.width / 2, canvas.height / 2, 255 + barHeight, (9 / EQ) * Math.PI, (10 / EQ) * Math.PI, false);
-                }
-                ctx.stroke();
             }
-            x += 1
-
-            if (x === 32) x = 0;
-            // ctx.stroke();
-
-            // 285, 130
         }
         audio.play();
         renderVisualizer();
     }
 }
 
+
 export { heartPlay };
+//7.5 W
+//4 H
