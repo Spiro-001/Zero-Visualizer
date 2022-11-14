@@ -7,5 +7,5 @@ import { heartPlay } from "./scripts/heartPlay";
 // circlePlay();
 // mirrorbarPlay();
 // barPlay();
-lightningPlay();
+barPlay();
 // heartPlay();
