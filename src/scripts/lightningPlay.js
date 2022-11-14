@@ -141,14 +141,6 @@ const lightningPlay = function(){
                     ctx.stroke();
                 }
             }
-            // ctx.beginPath();
-            // ctx.strokeStyle = "red";
-            // ctx.strokeStyle = "white";
-            // ctx.moveTo(285, 130);
-            // ctx.bezierCurveTo(470, 38, 470, 258, 285, 333); // x y x
-            // ctx.moveTo(285, 130);
-            // ctx.bezierCurveTo(100, 38, 100, 258, 285, 333);
-            // ctx.stroke();
         }
         audio.play();
         renderVisualizer();

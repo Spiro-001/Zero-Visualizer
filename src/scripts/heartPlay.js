@@ -40,6 +40,8 @@ const heartPlay = function(){
         let y = 0;
         let boxCount = 0;
         let startRipple;
+        let howManyTimes = 0;
+        let tick = 0;
         let heartArray = [96, 97, 100, 101,
                         123, 124, 125, 126, 127, 128, 129, 130,
                         151, 152, 153, 154, 155, 156, 157, 158,
@@ -53,7 +55,7 @@ const heartPlay = function(){
             x = 0;
             y = 1;
             boxCount = 1;
-            startRipple = undefined;
+            startRipple = 88;
             visualizer.getByteFrequencyData(dataArray);
             ctx.fillStyle = "#000";
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
@@ -67,22 +69,32 @@ const heartPlay = function(){
                 }
                 else
                 {
-                    while(startRipple === undefined)
-                    {
-                        startRipple = Math.floor(Math.random() * 449);
-                        if (heartArray.includes(startRipple)) startRipple = undefined;
-                        console.log(startRipple);
-                    }
-                    for (let howManyTimes = 0; howManyTimes <= 28; howManyTimes++)
-                    {
+                    // while(startRipple === undefined)
+                    // {
+                    //     startRipple = Math.floor(Math.random() * 449);
+                    //     if (heartArray.includes(startRipple)) startRipple = undefined;
+                    // }
+                    if (tick === 0){
                         ctx.fillStyle = `rgba(${255},${0},${0})`;
-                        ctx.fillRect(startRipple * 69, Math.floor(startRipple / 28) * 69, boxSize, boxSize);
+                        ctx.fillRect((startRipple % 28) * 69, (Math.floor(startRipple / 28) - howManyTimes) * 69, boxSize, boxSize); // UP
+                        ctx.fillRect(((startRipple % 28) + howManyTimes) * 69, Math.floor(startRipple / 28) * 69, boxSize, boxSize); // RIGHT
+                        ctx.fillRect((startRipple % 28) * 69, (Math.floor(startRipple / 28) + howManyTimes) * 69, boxSize, boxSize); // DOWN
+                        ctx.fillRect(((startRipple % 28) - howManyTimes) * 69, Math.floor(startRipple / 28) * 69, boxSize, boxSize); // LEFT
+                        ctx.fillStyle = `rgba(${0},${0},${0})`;
+                        ctx.fillRect((startRipple % 28) * 69, (Math.floor(startRipple / 28) - (howManyTimes - 1)) * 69, boxSize, boxSize); // UP
+                        ctx.fillRect(((startRipple % 28) + howManyTimes - 1) * 69, Math.floor(startRipple / 28) * 69, boxSize, boxSize); // RIGHT
+                        ctx.fillRect((startRipple % 28) * 69, (Math.floor(startRipple / 28) + howManyTimes - 1) * 69, boxSize, boxSize); // DOWN
+                        ctx.fillRect(((startRipple % 28) - (howManyTimes - 1)) * 69, Math.floor(startRipple / 28) * 69, boxSize, boxSize); // LEFT
+                        howManyTimes += 1;
+                        if (howManyTimes === 28) howManyTimes = 0
                     }
+                    tick += 1;
                 }
                 
                 x += boxSize + 5; // GAP
                 boxCount += 1;
                 if (x > 1920) x = 0, y += boxSize + 5; // GAP and RESET X
+                if (tick === 1000) tick = 0;
 
             }
         }

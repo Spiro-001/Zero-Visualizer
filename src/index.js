@@ -5,4 +5,4 @@ import { lightningPlay } from "./scripts/lightningPlay"
 import { heartPlay } from "./scripts/heartPlay"
 // heartPlay();
 // lightningPlay();
-circlePlay();
+heartPlay();
