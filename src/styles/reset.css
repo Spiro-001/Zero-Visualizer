@@ -46,3 +46,14 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+html{
+	height: 100%;
+	width: 100%;
+}
+body{
+	height: inherit;
+	width: inherit;
+}
+li{
+	list-style: none;
+}

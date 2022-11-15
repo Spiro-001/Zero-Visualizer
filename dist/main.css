@@ -49,239 +49,97 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-/*!*****************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/visual.css ***!
-  \*****************************************************************************************************/
+html{
+	height: 100%;
+	width: 100%;
+}
+body{
+	height: inherit;
+	width: inherit;
+}
+li{
+	list-style: none;
+}
+/*!***************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/main.css ***!
+  \***************************************************************************************************/
 html {
-    height: 98%;
-    width: 98%;
     background-color: black;
 }
 
-li {
-    list-style-type: none;
-}
-
-div#content{
-    position: fixed;
+div#content {
     height: 100%;
     width: 100%;
-    top: 0px;
-    left: 0px;
 }
 
-body{
-    height: 100%;
-    width: 100%
-}
-
-#soundfile {
+div.soundmenu {
+    display: flex;
+    flex-direction: column;
     position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 100;
-}
-  
-#canvas {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    border-radius: 0 15px 15px 0;
+    padding-right: 5%;
+    top: 10%;
+    right: 95%;
+    height: 80%;
+    width: 30%;
+    opacity: 0;
+    transition-duration: 1s;
+    transition-property: right, background-color, opacity;
 }
 
-.eqmenu {
+div.soundmenu:hover {
+    position: flex;
+    padding: 0 2.5% 0 2.5%;
+    top: 10%;
+    right: 65%;
+    height: 80%;
+    width: 30%;
+    opacity: .85;
+}
+
+div.eqmenu {
     display: flex;
     position: fixed;
-    padding-left: 50px;
-    float: right;
-    right: 0px;
-    top: 0px;
-    width: 0%;
-    height: calc(100%);
-    background-color: rgba(44, 44, 44, 0.0);
-    transition-property: width, background-color;
-    transition-duration: 1.25s;
-}
-
-.eqmenu:hover {
-    display: block;
-    position: relative;
-    padding-left: 50px;
-    float: right;
-    width: 18%;
-    height: calc(100%);
-    background-color: rgba(44, 44, 44, 0.5);
-}
-
-.soundmenu {
-    display: inline;
-    position: fixed;
-    padding-right: 50px;
-    float: left;
-    left: -350px;
-    top: 0px;
-    width: calc(18%);
-    height: calc(100%);
-    background-color: rgba(44, 44, 44, 0.0);
-    transition-property: opacity, left, background-color;
+    top: 5%;
+    left: 90%;
+    height: 90%;
+    width: 30%;
+    transition: 1s left;
+    opacity: 0;
     transition-duration: 1s;
+    transition-property: left, opacity;
 }
 
-.soundmenu:hover {
-    display: block;
-    position: relative;
-    padding-right: 50px;
-    left: 0px;
-    float: left;
-    width: calc(18%);
-    height: calc(100%);
-    background-color: rgba(44, 44, 44, 0.5);
-}
-
-.submitsong {
-    display: none;
-    position: relative;
-}
-
-.eq {
-    display: none;
-    position: absolute;
-}
-
-.soundmenu:hover .submitsong{
-    display: block;
-    position: relative;
-    left: 35%;
-}
-
-.slider::-webkit-slider-thumb {
-    position: absolute;
-    top: 50px;
-    -webkit-appearance: none;
-    appearance: none;
-    width: 12px;
-    height: 12px;
-    border-radius: 15px;
-    background: #7fe8ff;
-    cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-    position: absolute;
-    top: 50px;
-    width: 12px;
-    height: 12px;
-    border-radius: 15px;
-    outline: 1px black solid;
-    background: #7fe8ff;
-    cursor: pointer;
-  }
-  
-.slider:hover {
-    opacity: 1;
-    color: rgb(255, 255, 255);
-}
-
-.soundmenu #uploadButton{
-    display: block;
-    position: absolute;
-}
-
-.soundmenu:hover #uploadButton{
-    display: inline;
-    position: relative;
-    left: 25%;
-    width: 50px;
-    height: 50px;
-    border-radius: 100px;
-    border: none;
-    background-color: transparent;
-}
-
-.soundmenu #uploadButtonText {
-    display: block;
-    position: absolute;
-}
-
-.soundmenu:hover #uploadButtonText {
-    display: inline-block;
-    position: relative;
-    padding-left: 5px;
-}
-
-.soundmenu li {
-    display: none;
-    list-style-type: none;
-    position: relative;
-    width: 300px;
-    left: calc(5%);
-}
-
-.soundmenu:hover li{
-    display: block;
-    list-style-type: none;
-    position: relative;
-    top: 30px;
-    left: calc(25%);
-    width: 300px;
-    padding-bottom: 50px;
-}
-
-.eqmenu li{
-    display: none;
-    list-style-type: none;
-    position: relative;
-}
-
-.eqmenu:hover li{
-    display: block;
-    list-style-type: none;
-    position: relative;
-    top: 30px;
-    right: 0px;
-    padding-bottom: 50px;
-}
-
-.eqmenu:hover .slider{
-    display: block;
-    position: relative;
-}
-
-.slidecontainer {
-    display: block;
-    position: relative;
-    width: 90%;
-  }
-  
-.slider {
-    display: none;
+div.eqmenu:hover {
+    display: flex;
     position: fixed;
-    -webkit-appearance: none;
-    appearance: none;
-    border-radius: 15px;
-    background-color: aliceblue;
-    height: 5px;
-    width: 100%;
-    opacity: 0.9;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
+    top: 5%;
+    left: 70%;
+    height: 90%;
+    width: 30%;
+    opacity: 0.85;
 }
 
-#uploadButtonImage{
+canvas#canvas {
+    display: block;
     position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 50px;
-    height: 50px;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
 }
 
-#buttonText{
-    position: relative;
-    top: 40px;
-    left: -30px;
-    width: 100px;
-    color: #7fe8ff;
+.button-gradient-menu-left {
+    background: linear-gradient(to left, rgb(0, 0, 0), rgb(0, 0, 0)) padding-box, 
+                linear-gradient(90deg, rgb(133, 255, 255) 0%, rgba(0, 213, 255, 0.45) 100%) border-box;
+    border-radius: 15px;
+    border: 2px solid transparent;
+}
+
+.button-gradient-menu-right {
+    background: linear-gradient(to left, rgb(0, 0, 0), rgb(0, 0, 0)) padding-box, 
+                linear-gradient(-90deg, rgb(133, 255, 255) 0%, rgba(0, 213, 255, 0.45) 100%) border-box;
+    border-radius: 15px;
+    border: 2px solid transparent;
 }
 /*!**********************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/mediaplayer.css ***!
@@ -289,19 +147,125 @@ body{
 audio {
     display: block;
     position: fixed;
-    padding-top: 60px;
+    height: 25%;
     left: 0px;
-    bottom: -40px;
-    width: calc(100%);
-    transition: 0.75s bottom;
+    top: 90%;
+    width: 100%;
+    transition: 0.75s top, padding;
 }
 
 audio:hover {
     display: block;
     position: fixed;
     left: 0px;
-    bottom: 0px;
+    top: 75%;
     width: calc(100%);
+}
+/*!*****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/eqmenu.css ***!
+  \*****************************************************************************************************/
+button#uploadButton{
+    opacity: 1;
+    background-color: transparent;
+    border: none;
+}
+
+button#optionButton{
+    opacity: 1;
+}
+
+img#uploadButtonImage{
+    width: 75px
+}
+
+div.eqmenu li{
+    display: flex;
+    width: 100%;
+    height: 15%;
+    padding-top: 20px;
+    justify-content: center;
+}
+
+div.eqmenu ul{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 15%;
+    gap: 10px;
+    padding-top: 20px;
+    justify-content: center;
+}
+
+div.eqmenu ul button{
+    display: block;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    color: white;
+}
+
+div.eqmenu ul button:hover{
+    cursor: pointer;
+}
+
+.button-gradient-round {
+    background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box, 
+                linear-gradient(90deg, rgb(133, 255, 255) 0%, rgba(0, 213, 255, 0.082) 100%) border-box;
+    border-radius: 15px;
+    border: 2px solid transparent;
+}
+/*!********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/soundmenu.css ***!
+  \********************************************************************************************************/
+button#uploadButton{
+    opacity: 1;
+    background-color: transparent;
+    border: none;
+}
+
+button#optionButton{
+    opacity: 1;
+}
+
+img#uploadButtonImage{
+    width: 75px
+}
+
+div.soundmenu li{
+    display: flex;
+    width: 100%;
+    height: 15%;
+    padding-top: 20px;
+    justify-content: center;
+}
+
+div.soundmenu ul{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 15%;
+    gap: 10px;
+    padding-top: 20px;
+    justify-content: center;
+}
+
+div.soundmenu ul button{
+    display: block;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    color: white;
+}
+
+div.soundmenu ul button:hover{
+    cursor: pointer;
+}
+
+.button-gradient-round {
+    background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box, 
+                linear-gradient(90deg, rgb(133, 255, 255) 0%, rgba(0, 213, 255, 0.082) 100%) border-box;
+    border-radius: 15px;
+    border: 1px solid transparent;
 }
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!

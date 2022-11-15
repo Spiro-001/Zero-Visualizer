@@ -136,7 +136,7 @@ const lightningPlay = function(){
                 }
                 x += 1
                 ctx.stroke();
-                if ((x % 128) === 0){
+                if ((x % 64) === 0){
                     ctx.beginPath();
                     ctx.stroke();
                 }

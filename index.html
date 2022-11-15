@@ -15,22 +15,39 @@
   </head>
 
   <body>
-    <canvas id="test"></canvas>
     <div id="content">
-        <canvas id="canvas"></canvas>
-        <div class="soundmenu">
+        <div class="soundmenu button-gradient-menu-left">
           <li>
             <input type="file" id="soundfile" accept="audio/*" hidden="hidden">
             <button type="button" id="uploadButton">
               <img id="uploadButtonImage" src="./assets/uploadbutton.png">
-              <p id="buttonText">Upload Song</p>
             </button>
           </li>
-          <li>
-
-          </li>
+          <ul>
+            <li>
+              <button type="button" id="optionButton" class="button-gradient-round">A</button>
+            </li>
+            <li>
+              <button type="button" id="optionButton" class="button-gradient-round">B</button>
+            </li>
+            <li>
+              <button type="button" id="optionButton" class="button-gradient-round">C</button>
+            </li>
+            <li>
+              <button type="button" id="optionButton" class="button-gradient-round">D</button>
+            </li>
+            <li>
+              <button type="button" id="optionButton" class="button-gradient-round">E</button>
+            </li>
+            <li>
+              <button type="button" id="optionButton" class="button-gradient-round">F</button>
+            </li>
+          </ul>
         </div>
-        <div class="eqmenu">
+
+        <canvas id="canvas"></canvas>
+
+        <div class="eqmenu button-gradient-menu-right">
           <li>
             <div class="slidecontainer">
               <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
