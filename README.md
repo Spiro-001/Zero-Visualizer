@@ -36,7 +36,7 @@ Watch as how different frequencies affect the visualizer.
 1. Friday : ✔️
 - Seperate audio file into frequencies that are managable.
 - Create canvas objects based on frequencies levels.
-2. Saturday : ❌
+2. Saturday : ✔️
 - Tune canvas objects more precisely in order to seperate instruments.
 - Create sliders to adjust the shape of the visualizer.
 3. Monday : ❌
