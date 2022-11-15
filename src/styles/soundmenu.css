@@ -1,26 +1,52 @@
-button#uploadButton{
+button#uploadButton {
     opacity: 1;
     background-color: transparent;
     border: none;
 }
 
-button#optionButton{
+button#uploadButton:hover {
     opacity: 1;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
-img#uploadButtonImage{
-    width: 75px
+button.optionButton {
+    opacity: 1;
+    width: 75px;
+    font-size: 15px;
 }
 
-div.soundmenu li{
+button.optionButton:hover {
+    opacity: 1;
+    width: 195px;
+    height: 35px;
+    border-radius: 20px;
+    font-size: 18px;
+    background-color: white;
+}
+
+img#uploadButtonImage {
+    width: 75px;
+    border-radius: 75px;
+}
+
+img#uploadButtonImage:hover {
+    width: 80px;
+    border-radius: 75px;
+    background-color: white;
+}
+
+div.soundmenu li {
     display: flex;
+    align-items: center;
     width: 100%;
-    height: 15%;
-    padding-top: 20px;
+    height: 40px;
+    padding-top: 40px;
     justify-content: center;
 }
 
-div.soundmenu ul{
+div.soundmenu ul {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -30,7 +56,7 @@ div.soundmenu ul{
     justify-content: center;
 }
 
-div.soundmenu ul button{
+div.soundmenu ul button {
     display: block;
     width: 100%;
     height: 30px;
@@ -38,8 +64,47 @@ div.soundmenu ul button{
     color: white;
 }
 
-div.soundmenu ul button:hover{
+div.soundmenu ul button:hover {
     cursor: pointer;
+}
+
+div.soundmenu div.soundfileName {
+    flex-direction: column;
+    color: white;
+}
+
+div.soundmenu div.soundfileName:hover {
+    background-color: white;
+    color: white;
+}
+
+div.soundmenu div p{
+    display: flex;
+    padding: 3% 0% 1% 3%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: white;
+}
+
+div.soundmenu div p.author {
+    display: block;
+    padding-right: 2%;
+    text-align: right;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: rgb(196, 254, 255);
+}
+
+div.soundmenu div.bottomnavBar {
+    display: flex;
+    position: absolute;
+    text-align: right;
+    justify-content: flex-end;
+    gap: 2%;
+    bottom: 5%;
+    height: 10%;
+    width: 85%;
 }
 
 .button-gradient-round {
@@ -47,4 +112,23 @@ div.soundmenu ul button:hover{
                 linear-gradient(90deg, rgb(133, 255, 255) 0%, rgba(0, 213, 255, 0.082) 100%) border-box;
     border-radius: 15px;
     border: 1px solid transparent;
+}
+
+div.soundmenu div.bottomnavBar a {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+    height: 100%;
+    width: 10%;
+
+}
+
+.githubIcon {
+    height: 90%;
+    float: right;
+}
+
+.githubIcon:hover {
+    height: 100%;
 }

@@ -1,18 +1,18 @@
-button#uploadButton{
+button#uploadButton {
     opacity: 1;
     background-color: transparent;
     border: none;
 }
 
-button#optionButton{
+button#optionButton {
     opacity: 1;
 }
 
-img#uploadButtonImage{
+img#uploadButtonImage {
     width: 75px
 }
 
-div.eqmenu li{
+div.eqmenu li {
     display: flex;
     width: 100%;
     height: 15%;
@@ -20,7 +20,7 @@ div.eqmenu li{
     justify-content: center;
 }
 
-div.eqmenu ul{
+div.eqmenu ul {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -30,7 +30,7 @@ div.eqmenu ul{
     justify-content: center;
 }
 
-div.eqmenu ul button{
+div.eqmenu ul button {
     display: block;
     width: 100%;
     height: 30px;
@@ -38,7 +38,7 @@ div.eqmenu ul button{
     color: white;
 }
 
-div.eqmenu ul button:hover{
+div.eqmenu ul button:hover {
     cursor: pointer;
 }
 

@@ -3,13 +3,13 @@ const lightningPlay = function(){
     let sfile = document.getElementById("soundfile");
     let uploadSound = document.getElementById("uploadButton")
     let audio = document.getElementById("audio");
-
+    console.log(sfile);
     uploadSound.addEventListener("click", function(){
         sfile.click();
     });
-  
     sfile.onchange = function(){
-        let sfiles = this.files;
+        let sfiles = [];
+        sfiles.push(this.files);
         audio.src = URL.createObjectURL(sfiles[0]);
         audio.load();
         audio.play();

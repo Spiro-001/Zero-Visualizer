@@ -20,29 +20,54 @@
           <li>
             <input type="file" id="soundfile" accept="audio/*" hidden="hidden">
             <button type="button" id="uploadButton">
-              <img id="uploadButtonImage" src="./assets/uploadbutton.png">
+              <img class="button-gradient-round" id="uploadButtonImage" src="./assets/uploadbutton.png">
             </button>
           </li>
           <ul>
             <li>
-              <button type="button" id="optionButton" class="button-gradient-round">A</button>
+              <button id="lightning" type="button" class="optionButton button-gradient-round">🗲</button>
             </li>
             <li>
-              <button type="button" id="optionButton" class="button-gradient-round">B</button>
+              <button id="circle" type="button" class="optionButton button-gradient-round">⭕</button>
             </li>
             <li>
-              <button type="button" id="optionButton" class="button-gradient-round">C</button>
+              <button id="hear" type="button" class="optionButton button-gradient-round">❤️</button>
             </li>
             <li>
-              <button type="button" id="optionButton" class="button-gradient-round">D</button>
+              <button id="bar" type="button" class="optionButton button-gradient-round">☁️</button>
             </li>
             <li>
-              <button type="button" id="optionButton" class="button-gradient-round">E</button>
-            </li>
-            <li>
-              <button type="button" id="optionButton" class="button-gradient-round">F</button>
+              <button id="mirror" type="button" class="optionButton button-gradient-round">✨</button>
             </li>
           </ul>
+          <div class="soundfileName button-gradient-round">
+            <p>
+              Lightning Visualizer
+            </p>
+            <p>
+              Circle Visualizer
+            </p>
+            <p>
+              Heart Visualizer
+            </p>
+            <p>
+              Bar Visualizer
+            </p>
+            <p>
+              Random Bar Visualizer
+            </p>
+            <p class="author">
+              Made by Spiro-001 | Yong Kim
+            </p>
+          </div>
+          <div class="bottomnavBar">
+            <a href="https://github.com/Spiro-001/Zero-Visualizer" target="_blank">
+              <img class="githubIcon" src="https://visualpharm.com/assets/720/Github-595b40b65ba036ed117d442f.svg">
+            </a>
+            <a href="https://www.linkedin.com/in/yong-kim-645902178/" target="_blank">
+              <img class="githubIcon" src="https://visualpharm.com/assets/852/Linkedin-595b40b65ba036ed117d4495.svg">
+            </a>
+          </div>
         </div>
 
         <canvas id="canvas"></canvas>
