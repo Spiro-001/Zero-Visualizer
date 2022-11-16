@@ -99,7 +99,9 @@ div.soundmenu:hover {
 
 div.eqmenu {
     display: flex;
+    flex-direction: column;
     position: fixed;
+    padding-right: 5%;
     top: 5%;
     left: 90%;
     height: 90%;
@@ -112,7 +114,6 @@ div.eqmenu {
 
 div.eqmenu:hover {
     display: flex;
-    position: fixed;
     top: 5%;
     left: 70%;
     height: 90%;
@@ -176,38 +177,6 @@ audio:hover {
 /*!*****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/eqmenu.css ***!
   \*****************************************************************************************************/
-button#uploadButton {
-    opacity: 1;
-    background-color: transparent;
-    border: none;
-}
-
-button#optionButton {
-    opacity: 1;
-}
-
-img#uploadButtonImage {
-    width: 75px
-}
-
-div.eqmenu li {
-    display: flex;
-    width: 100%;
-    height: 15%;
-    padding-top: 20px;
-    justify-content: center;
-}
-
-div.eqmenu ul {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 15%;
-    gap: 10px;
-    padding-top: 20px;
-    justify-content: center;
-}
-
 div.eqmenu ul button {
     display: block;
     width: 100%;
@@ -216,15 +185,46 @@ div.eqmenu ul button {
     color: white;
 }
 
-div.eqmenu ul button:hover {
-    cursor: pointer;
+div.eqmenu ul {
+    display: flex;
+    position: absolute;
+    bottom: 0%;
+    left: 30%;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+    rotate: 270deg;
 }
 
-.button-gradient-round {
-    background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box, 
-                linear-gradient(90deg, rgb(133, 255, 255) 0%, rgba(0, 213, 255, 0.082) 100%) border-box;
-    border-radius: 15px;
-    border: 2px solid transparent;
+div.eqmenu ul li{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+div.eqmenu ul li .slidecontainer{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+div.eqmenu .slidecontainer p#bottom {
+    text-align: center;
+    height: 15px;
+    width: 30px;
+    rotate: 90deg;
+    float: left;
+    color: wheat;
+}
+
+div.eqmenu .slidecontainer p#top {
+    text-align: center;
+    height: 15px;
+    width: 30px;
+    rotate: 90deg;
+    float: left;
+    color: wheat;
 }
 /*!********************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/soundmenu.css ***!
@@ -308,18 +308,6 @@ div.soundmenu ul li:hover{
     padding-top: 40px;
     justify-content: center;
 }
-
-/* div.soundmenu ul button {
-    display: block;
-    width: 100%;
-    height: 30px;
-    text-align: center;
-    color: white;
-} */
-
-/* div.soundmenu ul button:hover {
-    cursor: pointer;
-} */
 
 div.soundmenu div.soundfileName {
     flex-direction: column;

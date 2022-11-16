@@ -73,16 +73,64 @@
         <canvas id="canvas"></canvas>
 
         <div class="eqmenu button-gradient-menu-right">
-          <li>
-            <div class="slidecontainer">
-              <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-            </div>
-          </li>
-          <li>
-            <div class="slidecontainer">
-              <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-            </div>
-          </li>
+          <ul>
+            <li>
+              <div class="slidecontainer">
+                <p id="bottom">0</p>
+                <input type="range" min="0" max="100" value="50" class="slider" id="highShelfGain">
+                <p id="top">100</p>
+              </div>
+            </li>
+            <li>
+              <div class="slidecontainer">
+                <p id="bottom">400</p>
+                <input type="range" min="400" max="4000" value="2200" class="slider" id="highShelfFreq">
+                <p id="top">4000</p>
+              </div>
+            </li>
+            <li>
+              <div class="slidecontainer">
+                <p id="bottom">0</p>
+                <input type="range" min="0" max="100" value="50" class="slider" id="lowShelfGain">
+                <p id="top">100</p>
+              </div>
+            </li>
+            <li>
+              <div class="slidecontainer">
+                <p id="bottom">20</p>
+                <input type="range" min="20" max="100" value="60" class="slider" id="lowShelfFreq">
+                <p id="top">100</p>
+              </div>
+            </li>
+            <li>
+              <div class="slidecontainer">
+                <p id="bottom">2500</p>
+                <input type="range" min="2500" max="4500" value="3500" class="slider" id="highPassFreq">
+                <p id="top">4500</p>
+              </div>
+            </li>
+            <li>
+              <div class="slidecontainer">
+                <p id="bottom">0.0</p>
+                <input type="range" min="0" max="1" value="0.5" step="0.05" class="slider" id="highPassQ">
+                <p id="top">1.0</p>
+              </div>
+            </li>
+            <li>
+              <div class="slidecontainer">
+                <p id="bottom">20</p>
+                <input type="range" min="20" max="400" value="210" class="slider" id="lowPassFreq">
+                <p id="top">400</p>
+              </div>
+            </li>
+            <li>
+              <div class="slidecontainer">
+                <p id="bottom">0.0</p>
+                <input type="range" min="0.0" max="1.0" value="0.5" step="0.05" class="slider" id="lowPassQ">
+                <p id="top">1.0</p>
+              </div>
+            </li>
+          </ul>     
         </div>
         <audio id="audio" controls></audio>
     </div>

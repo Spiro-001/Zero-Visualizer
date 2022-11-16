@@ -1,99 +1,18 @@
-const circlePlay = function(ctx, sfile, uploadSound, audio, WIDTH, HEIGHT){
+const circlePlay = function(ctx, audio, WIDTH, HEIGHT, visualizer){
 
+    // ANIMATION SEQUENCE SO THEY DONT STACK WITH OTHER VISUALIZERS
     window.animseq = 1;
 
-    ctx.clearRect(0,0, WIDTH, HEIGHT);
+    // HIGHER BUFFER SIZE WILL CONTAIN MORE INFORMATION
+    visualizer.fftSize = 512;
 
-    uploadSound.addEventListener("click", function(){
-        sfile.click();
-    });
-
-    let audioContext = new AudioContext();
-    let src = audioContext.createMediaElementSource(audio);
-    let visualizer = audioContext.createAnalyser();
-
-    let lowShelf = audioContext.createBiquadFilter();
-    let highShelf = audioContext.createBiquadFilter();
-    let highPass = audioContext.createBiquadFilter();
-    let lowPass = audioContext.createBiquadFilter();
-
-    src.connect(visualizer);
-    src.connect(highShelf);
-    highShelf.connect(lowShelf);
-    lowShelf.connect(highPass);
-    highPass.connect(lowPass);
-    lowPass.connect(audioContext.destination);
-
-    highShelf.type = "highshelf";
-    highShelf.frequency.value = 2000;
-    highShelf.gain.value = -100;
-
-    lowShelf.type = "lowshelf";
-    lowShelf.frequency.value = 220;
-    lowShelf.gain.value = 100;
-
-    highPass.type = "highpass";
-    highPass.frequency.value = 800;
-    highPass.Q.value = 0.7;
-
-    lowPass.type = "lowpass";
-    lowPass.frequency.value = 100;
-    lowPass.Q.value = 12;
-
-    src.connect(visualizer);
-    visualizer.connect(audioContext.destination);
-    visualizer.fftSize = 512; // Higher the more detail in data.
-
-    let bufferLength = visualizer.frequencyBinCount; // Half of fftSize represents the amount of data values
+    // INITIATE BASED ON TYPE OF VISUALIZTION
+    let bufferLength = visualizer.frequencyBinCount; // HALF OF FFTSIZE
     let dataArray = new Uint8Array(bufferLength);
     let barHeight = 0;
     let EQ = 5 // THE AMOUNT OF IF STATEMENTS
 
-    sfile.onchange = function(){
-        let sfiles = this.files;
-        audio.src = URL.createObjectURL(sfiles[0]);
-        audio.load();
-        audio.play();
-
-        audioContext = new AudioContext();
-        src = audioContext.createMediaElementSource(audio);
-        visualizer = audioContext.createAnalyser();
-
-        src.connect(visualizer);
-        src.connect(highShelf);
-        highShelf.connect(lowShelf);
-        lowShelf.connect(highPass);
-        highPass.connect(lowPass);
-        lowPass.connect(audioContext.destination);
-    
-        highShelf.type = "highshelf";
-        highShelf.frequency.value = 4700;
-        highShelf.gain.value = -100;
-    
-        lowShelf.type = "lowshelf";
-        lowShelf.frequency.value = 220;
-        lowShelf.gain.value = 100;
-    
-        highPass.type = "highpass";
-        highPass.frequency.value = 800;
-        highPass.Q.value = 0.7;
-    
-        lowPass.type = "lowpass";
-        lowPass.frequency.value = 100;
-        lowPass.Q.value = 12;
-
-        src.connect(visualizer);
-        visualizer.connect(audioContext.destination);
-        visualizer.fftSize = 512; // Higher the more detail in data.
-
-        bufferLength = visualizer.frequencyBinCount; // Half of fftSize represents the amount of data values
-        dataArray = new Uint8Array(bufferLength);
-    
-        barHeight = 0;
-        EQ = 5 // THE AMOUNT OF IF STATEMENTS
-        renderVisualizer();
-    }
-
+    // RENDER VISUALIZATION FUNCTION
     function renderVisualizer(){
         if (window.animseq === 1){
             ctx.clearRect(0,0, WIDTH, HEIGHT);
@@ -203,6 +122,7 @@ const circlePlay = function(ctx, sfile, uploadSound, audio, WIDTH, HEIGHT){
         }
     }
     
+    // IF SONG IS NOT LOADED VISUALIZER WILL NOT START
     if (visualizer) {
         ctx.clearRect(0,0, WIDTH, HEIGHT);
         renderVisualizer();

@@ -78,18 +78,6 @@ div.soundmenu ul li:hover{
     justify-content: center;
 }
 
-/* div.soundmenu ul button {
-    display: block;
-    width: 100%;
-    height: 30px;
-    text-align: center;
-    color: white;
-} */
-
-/* div.soundmenu ul button:hover {
-    cursor: pointer;
-} */
-
 div.soundmenu div.soundfileName {
     flex-direction: column;
     color: white;
