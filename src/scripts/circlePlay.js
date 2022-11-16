@@ -1,26 +1,18 @@
-const circlePlay = function(){
-
-    let sfile = document.getElementById("soundfile");
-    let uploadSound = document.getElementById("uploadButton")
-    let audio = document.getElementById("audio");
-    console.log(sfile);
+const circlePlay = function(ctx, sfile, uploadSound, audio, WIDTH, HEIGHT){
     uploadSound.addEventListener("click", function(){
         sfile.click();
     });
-    console.log(sfile);
+
     sfile.onchange = function(){
         let sfiles = this.files;
         audio.src = URL.createObjectURL(sfiles[0]);
         audio.load();
         audio.play();
+
         let audioContext = new AudioContext();
         let src = audioContext.createMediaElementSource(audio);
         let visualizer = audioContext.createAnalyser();
 
-        let stage = document.getElementById("canvas");
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        let ctx = stage.getContext('2d');
         src.connect(visualizer);
         visualizer.connect(audioContext.destination);
         visualizer.fftSize = 512; // Higher the more detail in data.
@@ -28,9 +20,6 @@ const circlePlay = function(){
         let bufferLength = visualizer.frequencyBinCount; // Half of fftSize represents the amount of data values
 
         let dataArray = new Uint8Array(bufferLength);
-
-        let WIDTH = canvas.width;
-        let HEIGHT = canvas.height;
 
         let barWidth = (WIDTH / bufferLength) * 2.5;
         let barHeight;
@@ -144,7 +133,6 @@ const circlePlay = function(){
             ctx.arc(canvas.width / 2, canvas.height / 2, 255, 0, 2 * Math.PI, false);
             ctx.stroke();
         }
-        audio.play();
         renderVisualizer();
     }
 }

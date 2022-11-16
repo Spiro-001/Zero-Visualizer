@@ -1,15 +1,10 @@
-const lightningPlay = function(){
-
-    let sfile = document.getElementById("soundfile");
-    let uploadSound = document.getElementById("uploadButton")
-    let audio = document.getElementById("audio");
-    console.log(sfile);
+const lightningPlay = function(ctx, sfile, uploadSound, audio, WIDTH, HEIGHT){
     uploadSound.addEventListener("click", function(){
         sfile.click();
     });
+
     sfile.onchange = function(){
-        let sfiles = [];
-        sfiles.push(this.files);
+        let sfiles = this.files;
         audio.src = URL.createObjectURL(sfiles[0]);
         audio.load();
         audio.play();
@@ -17,10 +12,6 @@ const lightningPlay = function(){
         let src = audioContext.createMediaElementSource(audio);
         let visualizer = audioContext.createAnalyser();
 
-        let stage = document.getElementById("canvas");
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        let ctx = stage.getContext('2d');
         src.connect(visualizer);
         visualizer.connect(audioContext.destination);
         visualizer.fftSize = 512; // Higher the more detail in data.
@@ -29,10 +20,6 @@ const lightningPlay = function(){
 
         let dataArray = new Uint8Array(bufferLength);
 
-        let WIDTH = canvas.width;
-        let HEIGHT = canvas.height;
-
-        let barWidth = (WIDTH / bufferLength) * 2.5;
         let barHeight;
         let x = 0;
         let EQ = 5 // THE AMOUNT OF IF STATEMENTS
@@ -142,7 +129,6 @@ const lightningPlay = function(){
                 }
             }
         }
-        audio.play();
         renderVisualizer();
     }
 }
