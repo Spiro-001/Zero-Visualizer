@@ -1,34 +1,54 @@
 const lightningPlay = function(ctx, sfile, uploadSound, audio, WIDTH, HEIGHT){
+
+    window.animseq = 2;
+
     uploadSound.addEventListener("click", function(){
         sfile.click();
     });
 
+    let audioContext = new AudioContext();
+    let src = audioContext.createMediaElementSource(audio);
+    let visualizer = audioContext.createAnalyser();
+
+    src.connect(visualizer);
+    visualizer.connect(audioContext.destination);
+    visualizer.fftSize = 512; // Higher the more detail in data.
+
+    let bufferLength = visualizer.frequencyBinCount; // Half of fftSize represents the amount of data values
+    let dataArray = new Uint8Array(bufferLength);
+    let barHeight = 0;
+    let x = 0;
+    let EQ = 5;
+
     sfile.onchange = function(){
+
         let sfiles = this.files;
         audio.src = URL.createObjectURL(sfiles[0]);
         audio.load();
         audio.play();
-        let audioContext = new AudioContext();
-        let src = audioContext.createMediaElementSource(audio);
-        let visualizer = audioContext.createAnalyser();
+
+        audioContext = new AudioContext();
+        src = audioContext.createMediaElementSource(audio);
+        visualizer = audioContext.createAnalyser();
 
         src.connect(visualizer);
         visualizer.connect(audioContext.destination);
         visualizer.fftSize = 512; // Higher the more detail in data.
 
-        let bufferLength = visualizer.frequencyBinCount; // Half of fftSize represents the amount of data values
+        bufferLength = visualizer.frequencyBinCount; // Half of fftSize represents the amount of data values
 
-        let dataArray = new Uint8Array(bufferLength);
+        dataArray = new Uint8Array(bufferLength);
 
-        let barHeight;
-        let x = 0;
-        let EQ = 5 // THE AMOUNT OF IF STATEMENTS
+        barHeight = 0;
+        x = 0;
+        EQ = 5 // THE AMOUNT OF IF STATEMENTS
+        renderVisualizer();
+    }
 
-        function renderVisualizer(){
-            requestAnimationFrame(renderVisualizer);
+    function renderVisualizer(){
+        if (window.animseq === 2){
             visualizer.getByteFrequencyData(dataArray);
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
-            // console.log(dataArray);
             for (let i = 0; i < bufferLength; i++){
                 barHeight = dataArray[i];
 
@@ -128,9 +148,18 @@ const lightningPlay = function(ctx, sfile, uploadSound, audio, WIDTH, HEIGHT){
                     ctx.stroke();
                 }
             }
+            requestAnimationFrame(renderVisualizer);
         }
-        renderVisualizer();
     }
+
+    if (visualizer) {
+        ctx.beginPath();
+        ctx.stroke();
+        ctx.clearRect(0,0, WIDTH, HEIGHT);
+        renderVisualizer();
+        console.log("b");
+    }
+
 }
 
 export { lightningPlay };
