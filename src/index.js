@@ -23,6 +23,8 @@ const circle = document.getElementById("circle")
 
 // lightningPlay(ctx, sfile, uploadSound, audio, WIDTH, HEIGHT);
 
+let lowShel
+
 lightning.addEventListener("click", e => {
     lightningPlay(ctx, sfile, uploadSound, audio, WIDTH, HEIGHT);
 });

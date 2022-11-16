@@ -10,7 +10,34 @@ const lightningPlay = function(ctx, sfile, uploadSound, audio, WIDTH, HEIGHT){
     let src = audioContext.createMediaElementSource(audio);
     let visualizer = audioContext.createAnalyser();
 
+    let lowShelf = audioContext.createBiquadFilter();
+    let highShelf = audioContext.createBiquadFilter();
+    let highPass = audioContext.createBiquadFilter();
+    let lowPass = audioContext.createBiquadFilter();
+
     src.connect(visualizer);
+    src.connect(highShelf);
+    highShelf.connect(lowShelf);
+    lowShelf.connect(highPass);
+    highPass.connect(lowPass);
+    lowPass.connect(audioContext.destination);
+
+    highShelf.type = "highshelf";
+    highShelf.frequency.value = 2000;
+    highShelf.gain.value = -100;
+
+    lowShelf.type = "lowshelf";
+    lowShelf.frequency.value = 220;
+    lowShelf.gain.value = 100;
+
+    highPass.type = "highpass";
+    highPass.frequency.value = 800;
+    highPass.Q.value = 0.7;
+
+    lowPass.type = "lowpass";
+    lowPass.frequency.value = 100;
+    lowPass.Q.value = 12;
+
     visualizer.connect(audioContext.destination);
     visualizer.fftSize = 512; // Higher the more detail in data.
 
@@ -32,6 +59,28 @@ const lightningPlay = function(ctx, sfile, uploadSound, audio, WIDTH, HEIGHT){
         visualizer = audioContext.createAnalyser();
 
         src.connect(visualizer);
+        src.connect(highShelf);
+        highShelf.connect(lowShelf);
+        lowShelf.connect(highPass);
+        highPass.connect(lowPass);
+        lowPass.connect(audioContext.destination);
+    
+        highShelf.type = "highshelf";
+        highShelf.frequency.value = 4700;
+        highShelf.gain.value = -100;
+    
+        lowShelf.type = "lowshelf";
+        lowShelf.frequency.value = 220;
+        lowShelf.gain.value = 100;
+    
+        highPass.type = "highpass";
+        highPass.frequency.value = 800;
+        highPass.Q.value = 0.7;
+    
+        lowPass.type = "lowpass";
+        lowPass.frequency.value = 100;
+        lowPass.Q.value = 12;
+
         visualizer.connect(audioContext.destination);
         visualizer.fftSize = 512; // Higher the more detail in data.
 
