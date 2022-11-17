@@ -26,38 +26,47 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 }
+
 ol, ul {
 	list-style: none;
 }
+
 blockquote, q {
 	quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-html{
+
+html {
 	height: 100%;
 	width: 100%;
 }
-body{
+
+body {
 	height: inherit;
 	width: inherit;
 }
-li{
+
+li {
 	list-style: none;
 }
 /*!***************************************************************************************************!*\
@@ -197,24 +206,22 @@ a:visited {
 
 #mottoPopUp #mottoPopUpRemove img{
     width: 45px;
+    z-index: 100;
 }
 
 #mottoPopUp #mottoText {
     display: block;
-    position: absolute;
+    position: relative;
     font-family: 'Roboto Mono', monospace;
     font-weight: 700;
-    font-size: 20px;
-    padding: 25px;
-}
-
-br {
-    margin-bottom: 10px;
+    font-size: 20px;    
+    padding: 15px 0 0 15px;
+    z-index: -5;
 }
 /*!**********************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/mediaplayer.css ***!
   \**********************************************************************************************************/
-audio {
+/* audio {
     display: block;
     position: fixed;
     height: 25%;
@@ -227,6 +234,27 @@ audio {
 audio:hover {
     display: block;
     position: fixed;
+    left: 0px;
+    top: 75%;
+    width: calc(100%);
+} */
+
+audio {
+    display: none;
+}
+
+div#player {
+    display: block;
+    position: absolute;
+    top: 99%;
+    left: 0px;
+    transition: 0.75s top, padding;
+    padding-top: 100px;
+}
+
+div#player:hover {
+    display: block;
+    position: absolute;
     left: 0px;
     top: 75%;
     width: calc(100%);

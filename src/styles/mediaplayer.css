@@ -1,4 +1,4 @@
-audio {
+/* audio {
     display: block;
     position: fixed;
     height: 25%;
@@ -11,6 +11,27 @@ audio {
 audio:hover {
     display: block;
     position: fixed;
+    left: 0px;
+    top: 75%;
+    width: calc(100%);
+} */
+
+audio {
+    display: none;
+}
+
+div#player {
+    display: block;
+    position: absolute;
+    top: 99%;
+    left: 0px;
+    transition: 0.75s top, padding;
+    padding-top: 100px;
+}
+
+div#player:hover {
+    display: block;
+    position: absolute;
     left: 0px;
     top: 75%;
     width: calc(100%);

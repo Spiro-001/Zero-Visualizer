@@ -132,17 +132,15 @@ a:visited {
 
 #mottoPopUp #mottoPopUpRemove img{
     width: 45px;
+    z-index: 100;
 }
 
 #mottoPopUp #mottoText {
     display: block;
-    position: absolute;
+    position: relative;
     font-family: 'Roboto Mono', monospace;
     font-weight: 700;
-    font-size: 20px;
-    padding: 25px;
-}
-
-br {
-    margin-bottom: 10px;
+    font-size: 20px;    
+    padding: 15px 0 0 15px;
+    z-index: -5;
 }
