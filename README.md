@@ -11,6 +11,9 @@ Author : Yong Kim
 ## Screenshots
 ![Screenshot1](./images/screenshot1.png)
 ![Screenshot2](./images/screenshot2.png)
+![Screenshot3](./images/screenshot3.png)
+![Screenshot4](./images/screenshot4.png)
+![Screenshot5](./images/screenshot5.png)
 
 ## API's
 * [Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
