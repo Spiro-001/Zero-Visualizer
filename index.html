@@ -17,12 +17,14 @@
   <body>
     <div id="content">
         <div class="soundmenu button-gradient-menu-left">
+
           <li>
             <input type="file" id="soundfile" accept="audio/*" hidden="hidden">
             <button type="button" id="uploadButton">
               <img class="button-gradient-round" id="uploadButtonImage" src="./assets/uploadbutton.png">
             </button>
           </li>
+
           <ul>
             <li>
               <button id="lightning" type="button" class="optionButton button-gradient-round">🗲</button>
@@ -31,35 +33,31 @@
               <button id="circle" type="button" class="optionButton button-gradient-round">⭕</button>
             </li>
             <li>
-              <button id="hear" type="button" class="optionButton button-gradient-round">❤️</button>
+              <button id="heart" type="button" class="optionButton button-gradient-round">❤️</button>
             </li>
             <li>
               <button id="bar" type="button" class="optionButton button-gradient-round">☁️</button>
             </li>
-            <li>
-              <button id="mirror" type="button" class="optionButton button-gradient-round">✨</button>
-            </li>
           </ul>
+
           <div class="soundfileName button-gradient-round">
-            <p>
+            <p id="1">
               Lightning Visualizer
             </p>
-            <p>
+            <p id="2">
               Circle Visualizer
             </p>
-            <p>
+            <p id="3">
               Heart Visualizer
             </p>
-            <p>
+            <p id="4">
               Bar Visualizer
-            </p>
-            <p>
-              Random Bar Visualizer
             </p>
             <p class="author">
               Made by Spiro-001 | Yong Kim
             </p>
           </div>
+
           <div class="bottomnavBar">
             <a href="https://github.com/Spiro-001/Zero-Visualizer" target="_blank">
               <img class="githubIcon" src="https://visualpharm.com/assets/720/Github-595b40b65ba036ed117d442f.svg">
@@ -68,17 +66,38 @@
               <img class="githubIcon" src="https://visualpharm.com/assets/852/Linkedin-595b40b65ba036ed117d4495.svg">
             </a>
           </div>
+
         </div>
 
         <canvas id="canvas"></canvas>
 
         <div class="eqmenu button-gradient-menu-right">
+
+          <div class="parametricEQ button-gradient-menu-right">
+            <img id="cat" src="https://gifimage.net/wp-content/uploads/2018/04/rain-gif-transparent-9.gif">
+          </div>
+
           <ul>
             <li>
               <div class="slidecontainer">
-                <p id="bottom">0</p>
-                <input type="range" min="0" max="100" value="50" class="slider" id="highShelfGain">
-                <p id="top">100</p>
+                <p id="bottom">-50</p>
+                <input type="range" min="-50" max="50" value="0" class="slider" id="lowShelfGain">
+                <p id="top">50</p>
+              </div>
+            </li>
+            <li>
+              <div class="slidecontainer">
+                <p id="bottom">20</p>
+                <input type="range" min="20" max="300" value="160" class="slider" id="lowShelfFreq">
+                <p id="top">300</p>
+              </div>
+            </li>
+
+            <li>
+              <div class="slidecontainer">
+                <p id="bottom">-50</p>
+                <input type="range" min="-50" max="50" value="0" class="slider" id="highShelfGain">
+                <p id="top">50</p>
               </div>
             </li>
             <li>
@@ -88,25 +107,12 @@
                 <p id="top">4000</p>
               </div>
             </li>
-            <li>
-              <div class="slidecontainer">
-                <p id="bottom">0</p>
-                <input type="range" min="0" max="100" value="50" class="slider" id="lowShelfGain">
-                <p id="top">100</p>
-              </div>
-            </li>
+
             <li>
               <div class="slidecontainer">
                 <p id="bottom">20</p>
-                <input type="range" min="20" max="100" value="60" class="slider" id="lowShelfFreq">
-                <p id="top">100</p>
-              </div>
-            </li>
-            <li>
-              <div class="slidecontainer">
-                <p id="bottom">2500</p>
-                <input type="range" min="2500" max="4500" value="3500" class="slider" id="highPassFreq">
-                <p id="top">4500</p>
+                <input type="range" min="20" max="400" value="210" class="slider" id="highPassFreq">
+                <p id="top">450</p>
               </div>
             </li>
             <li>
@@ -116,11 +122,12 @@
                 <p id="top">1.0</p>
               </div>
             </li>
+
             <li>
               <div class="slidecontainer">
-                <p id="bottom">20</p>
-                <input type="range" min="20" max="400" value="210" class="slider" id="lowPassFreq">
-                <p id="top">400</p>
+                <p id="bottom">2500</p>
+                <input type="range" min="2500" max="4500" value="3500" class="slider" id="lowPassFreq">
+                <p id="top">4500</p>
               </div>
             </li>
             <li>
@@ -130,7 +137,8 @@
                 <p id="top">1.0</p>
               </div>
             </li>
-          </ul>     
+          </ul>   
+
         </div>
         <audio id="audio" controls></audio>
     </div>

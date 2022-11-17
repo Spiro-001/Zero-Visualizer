@@ -1,4 +1,4 @@
-const circlePlay = function(ctx, audio, WIDTH, HEIGHT, visualizer){
+const circlePlay = function(ctx, audio, WIDTH, HEIGHT, visualizer, ctxEQ, pWidth, pHEIGHT){
 
     // ANIMATION SEQUENCE SO THEY DONT STACK WITH OTHER VISUALIZERS
     window.animseq = 1;
@@ -14,6 +14,8 @@ const circlePlay = function(ctx, audio, WIDTH, HEIGHT, visualizer){
 
     // RENDER VISUALIZATION FUNCTION
     function renderVisualizer(){
+        ctx.canvas.width = window.innerWidth;
+        ctx.canvas.height = window.innerHeight;
         if (window.animseq === 1){
             ctx.clearRect(0,0, WIDTH, HEIGHT);
             visualizer.getByteFrequencyData(dataArray);

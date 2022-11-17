@@ -15,6 +15,8 @@ const lightningPlay = function(ctx, audio, WIDTH, HEIGHT, visualizer){
 
     // RENDER VISUALIZATION FUNCTION
     function renderVisualizer(){
+        ctx.canvas.width = window.innerWidth;
+        ctx.canvas.height = window.innerHeight;
         if (window.animseq === 2){
             visualizer.getByteFrequencyData(dataArray);
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
