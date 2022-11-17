@@ -18,6 +18,9 @@ div.soundmenu {
     height: 80%;
     width: 30%;
     opacity: 0;
+    border-radius: 0px;
+    border-width: 4px;
+    background-color: purple;
     transition-duration: 1s;
     transition-property: right, background-color, opacity;
 }
@@ -43,6 +46,9 @@ div.eqmenu {
     width: 30%;
     transition: 1s left;
     opacity: 0;
+    border-radius: 0px;
+    border-width: 4px;
+    background-color: purple;
     transition-duration: 1s;
     transition-property: left, opacity;
 }
@@ -88,4 +94,55 @@ a:visited {
     text-decoration: inherit;
     color: inherit;
     cursor: auto;
+}
+
+#follow {
+    display: none;
+    position: absolute;
+    text-align: center;
+    z-index: -1;
+}
+
+#followImg {
+    height: 100px;
+}
+
+#mottoPopUp {
+    display: block;
+    position: absolute;
+    left: 15%;
+    top: 20%;
+    height: 60%;
+    width: 70%;
+    background-color: white;
+    color: white;
+    z-index: 10;
+    opacity: 1;
+    border-width: 4px;
+    border-radius: 0px;
+    transition: 1s opacity;
+}
+
+#mottoPopUp #mottoPopUpRemove{
+    display: block;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+}
+
+#mottoPopUp #mottoPopUpRemove img{
+    width: 45px;
+}
+
+#mottoPopUp #mottoText {
+    display: block;
+    position: absolute;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 25px;
+}
+
+br {
+    margin-bottom: 10px;
 }

@@ -1,104 +1,107 @@
-const heartPlay = function(){
+const heartPlay = function(ctx, audio, WIDTH, HEIGHT, visualizer){
 
-    let sfile = document.getElementById("soundfile");
-    let uploadSound = document.getElementById("uploadButton")
-    let audio = document.getElementById("audio");
+    // ANIMATION SEQUENCE SO THEY DONT STACK WITH OTHER VISUALIZERS
+    window.animseq = 4;
 
-    uploadSound.addEventListener("click", function(){
-        sfile.click();
-    });
-  
-    sfile.onchange = function(){
-        let sfiles = this.files;
-        audio.src = URL.createObjectURL(sfiles[0]);
-        audio.load();
-        audio.play();
-        let audioContext = new AudioContext();
-        let src = audioContext.createMediaElementSource(audio);
-        let visualizer = audioContext.createAnalyser();
+    // HIGHER BUFFER SIZE WILL CONTAIN MORE INFORMATION
+    visualizer.fftSize = 1024;
 
-        let stage = document.getElementById("canvas");
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        let ctx = stage.getContext('2d');
-        src.connect(visualizer);
-        visualizer.connect(audioContext.destination);
-        visualizer.fftSize = 1024; // Higher the more detail in data.
+    // INITIATE BASED ON TYPE OF VISUALIZTION
+    let bufferLength = visualizer.frequencyBinCount; // Half of fftSize represents the amount of data values
+    let dataArray = new Uint8Array(bufferLength);
+    let barHeight;
+    let boxSize = 64;
 
-        let bufferLength = visualizer.frequencyBinCount; // Half of fftSize represents the amount of data values
-
-        let dataArray = new Uint8Array(bufferLength);
-
-        let WIDTH = canvas.width;
-        let HEIGHT = canvas.height;
-
-        let barWidth = (WIDTH / bufferLength) * 2.5;
-        let barHeight;
-        let boxSize = 64;
-
-        let x = 0;
-        let y = 0;
-        let boxCount = 0;
-        let startRipple;
-        let howManyTimes = 0;
-        let tick = 0;
-        let heartArray = [96, 97, 100, 101,
-                        123, 124, 125, 126, 127, 128, 129, 130,
-                        151, 152, 153, 154, 155, 156, 157, 158,
-                        180, 181, 182, 183, 184, 185,
-                        209, 210, 211, 212,
-                        238, 239
+    let x = 0;
+    let y = 0;
+    let boxCount = 0;
+    let heartBeatSize = 4; // SMALLER NUMBER MEANS BIGGER BUMP
+    let heartArray = [96, 97, 100, 101,
+                    123, 124, 125, 126, 127, 128, 129, 130,
+                    151, 152, 153, 154, 155, 156, 157, 158,
+                    180, 181, 182, 183, 184, 185,
+                    209, 210, 211, 212,
+                    238, 239
                     ]
 
-        function renderVisualizer(){
-            requestAnimationFrame(renderVisualizer);
+    // RENDER VISUALIZATION FUNCTION
+    function renderVisualizer(){
+        ctx.canvas.width = window.innerWidth;
+        ctx.canvas.height = window.innerHeight;
+        if (window.animseq === 4){
             x = 0;
             y = 1;
             boxCount = 1;
-            startRipple = 88;
+            let startRipple;
+            
             visualizer.getByteFrequencyData(dataArray);
             ctx.fillStyle = "#000";
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
             for (let i = 0; i < bufferLength; i++){
-                if (heartArray.includes(boxCount))
-                {
-                    if (dataArray[3] < 200) barHeight = 0;
-                    else barHeight = dataArray[4];
-                    ctx.fillStyle = `rgba(${255},${0},${0},${barHeight / 256})`;
-                    ctx.fillRect(x, y, boxSize, boxSize);
+                if (heartArray.includes(boxCount)) {
+                    // ctx.fillStyle = `rgba(${255},${255},${255},${dataArray[8] / 256})`;
+                    // ctx.fillRect(x, y, boxSize + 5, boxSize + 5);
                 }
-                else
-                {
-                    // while(startRipple === undefined)
-                    // {
-                    //     startRipple = Math.floor(Math.random() * 449);
-                    //     if (heartArray.includes(startRipple)) startRipple = undefined;
-                    // }
-                    if (tick === 0){
-                        ctx.fillStyle = `rgba(${255},${0},${0})`;
-                        ctx.fillRect((startRipple % 28) * 69, (Math.floor(startRipple / 28) - howManyTimes) * 69, boxSize, boxSize); // UP
-                        ctx.fillRect(((startRipple % 28) + howManyTimes) * 69, Math.floor(startRipple / 28) * 69, boxSize, boxSize); // RIGHT
-                        ctx.fillRect((startRipple % 28) * 69, (Math.floor(startRipple / 28) + howManyTimes) * 69, boxSize, boxSize); // DOWN
-                        ctx.fillRect(((startRipple % 28) - howManyTimes) * 69, Math.floor(startRipple / 28) * 69, boxSize, boxSize); // LEFT
-                        ctx.fillStyle = `rgba(${0},${0},${0})`;
-                        ctx.fillRect((startRipple % 28) * 69, (Math.floor(startRipple / 28) - (howManyTimes - 1)) * 69, boxSize, boxSize); // UP
-                        ctx.fillRect(((startRipple % 28) + howManyTimes - 1) * 69, Math.floor(startRipple / 28) * 69, boxSize, boxSize); // RIGHT
-                        ctx.fillRect((startRipple % 28) * 69, (Math.floor(startRipple / 28) + howManyTimes - 1) * 69, boxSize, boxSize); // DOWN
-                        ctx.fillRect(((startRipple % 28) - (howManyTimes - 1)) * 69, Math.floor(startRipple / 28) * 69, boxSize, boxSize); // LEFT
-                        howManyTimes += 1;
-                        if (howManyTimes === 28) howManyTimes = 0
-                    }
-                    tick += 1;
+                else {
+                    ctx.fillStyle = `rgba(${255},${255},${255},${dataArray[12] / 256})`;
+                    ctx.fillRect(x, y, boxSize, boxSize);
                 }
                 
                 x += boxSize + 5; // GAP
                 boxCount += 1;
-                if (x > 1920) x = 0, y += boxSize + 5; // GAP and RESET X
-                if (tick === 1000) tick = 0;
-
+                if (x > 1920) x = 0, y += boxSize + 5; // GAP AND RESET X LIKE A TYPEWRITER
             }
+    
+            x = 0;
+            y = 1;
+            boxCount = 1;
+    
+            for (let i = 0; i < bufferLength; i++){
+                if (dataArray[6] > 100) barHeight = dataArray[4];
+                else barHeight = 0;
+    
+                if (heartArray.includes(boxCount)){
+                    ctx.fillStyle = `rgba(${0},${0},${0},${0.7})`;
+                    ctx.fillRect(x + 10 - barHeight / heartBeatSize, y + 10 - barHeight / heartBeatSize, boxSize + 5 + barHeight / heartBeatSize, boxSize + 5 + barHeight / heartBeatSize);
+                }
+                
+                x += boxSize + 5; // GAP
+                boxCount += 1;
+                if (x > 1920) x = 0, y += boxSize + 5; // GAP AND RESET X LIKE A TYPEWRITER
+            }
+
+            x = 0;
+            y = 1;
+            boxCount = 1;
+    
+            for (let i = 0; i < bufferLength; i++){
+                if (dataArray[6] > 100) barHeight = dataArray[4];
+                else barHeight = 0;
+    
+                if (heartArray.includes(boxCount)) {
+                    ctx.fillStyle = `rgba(${255},${0},${0},${1})`;
+                    ctx.fillRect(x - barHeight / heartBeatSize, y - barHeight / heartBeatSize, boxSize + 5 + barHeight / heartBeatSize, boxSize + 5 + barHeight / heartBeatSize);
+                }
+                
+                x += boxSize + 5; // GAP
+                boxCount += 1;
+                if (x > 1920) x = 0, y += boxSize + 5; // GAP AND RESET X LIKE A TYPEWRITER
+            }
+
+            for (let i = 0; i < bufferLength; i++){
+                
+                x += boxSize + 5; // GAP
+                boxCount += 1;
+                if (x > 1920) x = 0, y += boxSize + 5; // GAP AND RESET X LIKE A TYPEWRITER
+            }
+    
+            requestAnimationFrame(renderVisualizer);
         }
-        audio.play();
+    }
+
+    // IF SONG IS NOT LOADED VISUALIZER WILL NOT START
+    if (visualizer) {
+        ctx.clearRect(0,0, WIDTH, HEIGHT);
         renderVisualizer();
     }
 }

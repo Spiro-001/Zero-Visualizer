@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./dist/main.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="./dist/main.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono" rel="stylesheet"> 
     <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon/favicon-16x16.png">
@@ -15,6 +19,22 @@
   </head>
 
   <body>
+    <div id="follow"><img id="followImg" src="https://media3.giphy.com/media/exnOGAkUfpQVW/giphy.gif?cid=ecf05e4723euxp2nyp8dz9n9rdm1mz8jo2qx416ku6oszvgf&rid=giphy.gif" ></div>
+    <div id="mottoPopUp" class="button-gradient-round">
+      <div>
+        <div id="mottoPopUpRemove"><img src="https://dl.hiapphere.com/data/icon/201509/HiAppHere_com_com.meltinglogic.pixly.png"></div>
+        <div id="mottoText">WELCOME TO <span style="color: red">ZERO</span>,</div><br>
+        <div id="mottoText">ON THE LEFT SIDE OF THE SCREEN IS WHERE THE UPLOAD SPACE AND VISUALIZER SELECTOR ARE LOCATED.</div><br>
+        <div id="mottoText">ON THE RIGHT SIDE OF THE SCREEN IS WHERE THE PARAMETRIC EQ IS LOCATED.</div><br>
+        <div id="mottoText">TO ACCESS EITHER OF THESE MENUS, HOVER OVER THE LEFT OR RIGHT SIDE WITH YOUR MOUSE.</div><br><br>
+        <div id="mottoText">THE VISUALIZER WILL REACT WITH THE PARAMETRIC EQ.</div><br>
+        <div id="mottoText">PLAY AROUND WITH THE EQ AND SEE WHAT KIND OF WEIRD VISUALIZERS YOU CAN GET.</div><br>
+        <div id="mottoText">IF YOU EVER NEED TO RESET THE EQ GO AHEAD AND HIT RESET.</div><br><br>
+        <div id="mottoText">ONCE YOU UPLOAD A SOUND FILE, DONT FORGET TO HIT PLAY!</div><br>
+        <div id="mottoText">THE AUDIO CONTROLS ARE AT THE BOTTOM, JUST HOVER OVER IT.</div><br><br>
+        <div id="mottoText">ENJOY!</div><br>
+      </div>
+    </div>
     <div id="content">
         <div class="soundmenu button-gradient-menu-left">
 
@@ -75,9 +95,11 @@
 
           <div class="parametricEQ button-gradient-menu-right">
             <img id="cat" src="https://gifimage.net/wp-content/uploads/2018/04/rain-gif-transparent-9.gif">
+            <!-- <img id="dancing"src="https://i.kym-cdn.com/photos/images/newsfeed/001/107/162/5a7.gif"> -->
+            <!-- <img id="dancing" src="https://media3.giphy.com/media/exnOGAkUfpQVW/giphy.gif?cid=ecf05e4723euxp2nyp8dz9n9rdm1mz8jo2qx416ku6oszvgf&rid=giphy.gif&ct=s"> -->
           </div>
 
-          <ul>
+          <ul class="button-gradient-menu-right">
             <li>
               <div class="slidecontainer">
                 <p id="bottom">-50</p>

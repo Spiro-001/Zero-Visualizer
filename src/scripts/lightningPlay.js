@@ -130,7 +130,6 @@ const lightningPlay = function(ctx, audio, WIDTH, HEIGHT, visualizer){
         ctx.clearRect(0,0, WIDTH, HEIGHT);
         renderVisualizer();
     }
-
 }
 
 export { lightningPlay };

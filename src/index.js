@@ -29,6 +29,22 @@ const circle = document.getElementById("circle")
 const heart = document.getElementById("heart")
 const bar = document.getElementById("bar")
 
+// FOLLOW MOUSE
+$(document).mousemove(function(e) {
+    $("#follow").css({
+        left: e.pageX - 15,
+        top: e.pageY - 10
+    });
+});
+
+// FIRST TIME MOTTO POP UP
+const mottoPopUp = document.getElementById("mottoPopUp");
+const closePopUp = document.getElementById("mottoPopUpRemove");
+closePopUp.addEventListener("click", function(){
+    mottoPopUp.style.opacity = "0";
+    mottoPopUp.style.zIndex = "-10"
+});
+
 // HTML ELEMENTS
 const lightningText = document.getElementById("1");
 const circleText = document.getElementById("2");
@@ -131,14 +147,14 @@ sfile.onchange = function(){
 
 }
 
-// lightningPlay(ctx, sfile, uploadSound, audio, WIDTH, HEIGHT);
+// heartPlay(ctx, sfile, uploadSound, audio, WIDTH, HEIGHT);
 
 lightning.addEventListener("click", e => {
     lightningText.style.color = "red";
     circleText.style.color = "white";
     heartText.style.color = "white";
     cloudText.style.color = "white";
-    lightningPlay(ctx, audio, WIDTH, HEIGHT, visualizer, audioContext, src);
+    lightningPlay(ctx, audio, WIDTH, HEIGHT, visualizer);
 });
 
 circle.addEventListener("click", e => {
@@ -146,7 +162,7 @@ circle.addEventListener("click", e => {
     circleText.style.color = "red";
     heartText.style.color = "white";
     cloudText.style.color = "white";
-    circlePlay(ctx, audio, WIDTH, HEIGHT, visualizer, audioContext, src)
+    circlePlay(ctx, audio, WIDTH, HEIGHT, visualizer)
 });
 
 heart.addEventListener("click", e => {
@@ -154,7 +170,7 @@ heart.addEventListener("click", e => {
     circleText.style.color = "white";
     heartText.style.color = "red";
     cloudText.style.color = "white";
-    lightningPlay(ctx, audio, WIDTH, HEIGHT, visualizer, audioContext, src);
+    heartPlay(ctx, audio, WIDTH, HEIGHT, visualizer);
 });
 
 bar.addEventListener("click", e => {
@@ -162,7 +178,7 @@ bar.addEventListener("click", e => {
     circleText.style.color = "white";
     heartText.style.color = "white";
     cloudText.style.color = "red";
-    circlePlay(ctx, audio, WIDTH, HEIGHT, visualizer, audioContext, src)
+    barPlay(ctx, audio, WIDTH, HEIGHT, visualizer)
 });
 
 uploadSound.addEventListener("click", function(){

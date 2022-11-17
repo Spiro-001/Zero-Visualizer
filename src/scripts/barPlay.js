@@ -1,58 +1,41 @@
-const barPlay = function(){
+const barPlay = function(ctx, audio, WIDTH, HEIGHT, visualizer){
+    // ANIMATION SEQUENCE SO THEY DONT STACK WITH OTHER VISUALIZERS
+    window.animseq = 3;
 
-    let sfile = document.getElementById("soundfile");
-    let uploadSound = document.getElementById("uploadButton")
-    let audio = document.getElementById("audio");
+    // HIGHER BUFFER SIZE WILL CONTAIN MORE INFORMATION
+    visualizer.fftSize = 256;
 
-    uploadSound.addEventListener("click", function(){
-        sfile.click();
-    });
-  
-    sfile.onchange = function(){
-        let sfiles = this.files;
-        audio.src = URL.createObjectURL(sfiles[0]);
-        audio.load();
-        audio.play();
-        let audioContext = new AudioContext();
-        let src = audioContext.createMediaElementSource(audio);
-        let visualizer = audioContext.createAnalyser();
+    // INITIATE BASED ON TYPE OF VISUALIZTION
+    let bufferLength = visualizer.frequencyBinCount; // Half of fftSize represents the amount of data values
+    let dataArray = new Uint8Array(bufferLength);
+    let barWidth = (WIDTH / bufferLength) * 2.5;
+    let barHeight;
+    let x = 0;
 
-        let stage = document.getElementById("canvas");
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        let ctx = stage.getContext('2d');
-        src.connect(visualizer);
-        visualizer.connect(audioContext.destination);
-        visualizer.fftSize = 256; // Higher the more detail in data.
-
-        let bufferLength = visualizer.frequencyBinCount; // Half of fftSize represents the amount of data values
-
-        let dataArray = new Uint8Array(bufferLength);
-
-        let WIDTH = canvas.width;
-        let HEIGHT = canvas.height;
-
-        let barWidth = (WIDTH / bufferLength) * 2.5;
-        let barHeight;
-        let x = 0;
-
-        function renderVisualizer(){
-            requestAnimationFrame(renderVisualizer);
+    // RENDER VISUALIZATION FUNCTION
+    function renderVisualizer(){
+        ctx.canvas.width = window.innerWidth;
+        ctx.canvas.height = window.innerHeight;
+        if (window.animseq === 3){
             x = 0;
             visualizer.getByteFrequencyData(dataArray);
             ctx.fillStyle = "#000";
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
-
             for (let i = 0; i < bufferLength; i++){
                 barHeight = dataArray[i];
                 ctx.fillStyle = `rgba(${47},${253},${255},${barHeight / 255})`;
                 ctx.fillRect(x , HEIGHT - barHeight, barWidth, barHeight);
                 ctx.fillRect(x , HEIGHT - barHeight, barWidth, -1.5 * barHeight);
-
+    
                 x += barWidth + 10; // GAP
             }
-        }
-        audio.play();
+            requestAnimationFrame(renderVisualizer);
+        }  
+    }
+
+    // IF SONG IS NOT LOADED VISUALIZER WILL NOT START
+    if (visualizer) {
+        ctx.clearRect(0,0, WIDTH, HEIGHT);
         renderVisualizer();
     }
 }
