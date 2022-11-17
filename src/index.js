@@ -21,7 +21,23 @@ let HEIGHT = stage.height;
 // AUDIO HTML HANDLER
 let sfile = document.getElementById("soundfile");
 let uploadSound = document.getElementById("uploadButton")
-let audio = document.getElementById("audio"); 
+let audio = document.getElementById("audio");
+
+// CUSTOM AUDIO PLAYER
+// new Playerjs
+// let player = new Playerjs({ id: "player", file: "" });
+// let playButton = document.getElementById("player"); 
+
+function PlayerjsEvents(event, id, data) {
+    if (event == "play") {
+        alert(event);
+    }
+    if (event == "time") {
+        console.log(event, id, data);
+    }
+}
+
+// PlayerjsEvents("play", "player",);
 
 // CUSTOM HTML BUTTON
 const lightning = document.getElementById("lightning")
@@ -126,9 +142,10 @@ LPfilterQ.addEventListener("input", function(){lowPass.Q.value = LPfilterQ.value
 
 // WHEN FILE LOADED FUNCTION WILL RUN
 sfile.onchange = function(){
-
     let sfiles = this.files;
     audio.src = URL.createObjectURL(sfiles[0]);
+    // let player = new Playerjs({ id: "player", file: `${audio.src}` });
+    // console.log(player);
     audio.load();
     // audio.play(); GOOGLE CHROME DOES NOT ALLOW AUTOPLAY WITH CERTAIN EXCEPTIONS
 

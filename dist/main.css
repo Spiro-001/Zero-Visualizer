@@ -221,7 +221,7 @@ a:visited {
 /*!**********************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/mediaplayer.css ***!
   \**********************************************************************************************************/
-/* audio {
+audio {
     display: block;
     position: fixed;
     height: 25%;
@@ -237,28 +237,36 @@ audio:hover {
     left: 0px;
     top: 75%;
     width: calc(100%);
-} */
-
+}
+/* 
 audio {
     display: none;
+} */
+
+/* div#playerSpace {
+    display: flex;
+    align-items: flex-end;
+    position: fixed;
+    left: 0%;
+    top: 85%;
+    height: 15%;
+    width: 100%;
+}
+
+div#playerSpace:hover div#player{
+    display: block;
+    position: relative;
+    top: 0%;
+    width: calc(100%);
 }
 
 div#player {
     display: block;
-    position: absolute;
-    top: 99%;
-    left: 0px;
-    transition: 0.75s top, padding;
-    padding-top: 100px;
-}
-
-div#player:hover {
-    display: block;
-    position: absolute;
-    left: 0px;
-    top: 75%;
-    width: calc(100%);
-}
+    position: relative;
+    width: 100%;
+    top: 35%;
+    transition: 0.75s top;
+} */
 /*!*****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/eqmenu.css ***!
   \*****************************************************************************************************/

@@ -8,6 +8,10 @@ Author : Yong Kim
 * [Wireframe](#wireframe)
 * [References](#references)
 
+## Screenshots
+![Screenshot1](./images/screenshot1.png)
+![Screenshot2](./images/screenshot2.png)
+
 ## API's
 * [Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
 * [AudioNode](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode)
@@ -39,15 +43,14 @@ Watch as how different frequencies affect the visualizer.
 2. Saturday : ✔️
 - Tune canvas objects more precisely in order to seperate instruments.
 - Create sliders to adjust the shape of the visualizer.
-3. Monday : ❌
+3. Monday : ✔️
 - Add a EQ slider to adjust how to song will sound.
 - Stylize playbar.
-4. Tuesday : ❌
-- Implement three.js for a 3D object.
+4. Tuesday : ✔️
 - Improve style and finalize the project.
-5. Wednsday : ❌
+5. Wednsday : ✔️
 - Create demo GIFS for the github page and finish documentation of project.
-6. Thursday : ❌
+6. Thursday : ✔️
 - Complete the final look of the project.
 
 ## References

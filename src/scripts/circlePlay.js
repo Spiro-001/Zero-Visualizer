@@ -128,7 +128,6 @@ const circlePlay = function(ctx, audio, WIDTH, HEIGHT, visualizer, ctxEQ, pWidth
     if (visualizer) {
         ctx.clearRect(0,0, WIDTH, HEIGHT);
         renderVisualizer();
-        console.log("a");
     }
 
 
