@@ -28,15 +28,6 @@ let audio = document.getElementById("audio");
 // let player = new Playerjs({ id: "player", file: "" });
 // let playButton = document.getElementById("player"); 
 
-function PlayerjsEvents(event, id, data) {
-    if (event == "play") {
-        alert(event);
-    }
-    if (event == "time") {
-        console.log(event, id, data);
-    }
-}
-
 // PlayerjsEvents("play", "player",);
 
 // CUSTOM HTML BUTTON
